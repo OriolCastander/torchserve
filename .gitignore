@@ -1,2 +1,6 @@
-__oycache__/
+__pycache__/
+
+output/
 *pyc
+
+setup.ipynb
