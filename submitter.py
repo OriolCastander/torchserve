@@ -32,12 +32,16 @@ parser = argparse.ArgumentParser(description="Submits a model to a service")
 parser.add_argument("--wrapper", default="baseWrapper.py", help="The path to your wrapper")
 parser.add_argument("--name", required=True, help="The name of the model")
 parser.add_argument("--model", default="input/testModel.pth", help="The path of the saved model")
-
+parser.add_argument("--force", help="deletes the old model", action="store_true")
 
 
 async def main()->None:
     args = parser.parse_args()
 
+    if args.force:
+        if os.path.exists(os.path.join(os.path.dirname(__file__), "output/")):
+            import shutil
+            shutil.rmtree(os.path.join(os.path.dirname(__file__), "output"))
     
     wrapperPath = os.path.join(os.path.dirname(__file__), args.wrapper) 
     wrapper = instantiateWrapper(wrapperPath)

@@ -5,8 +5,8 @@
 		<!--DEFAULT LOCATION: ${env:LOG_LOCATION:-logs}/access_log.log-->
 		<RollingFile
 				name="access_log"
-				fileName="output/access_log.log"
-				filePattern="output/access_log.%d{dd-MMM}.log.gz">
+				fileName="output/logs/access_log.log"
+				filePattern="output/logs/access_log.%d{dd-MMM}.log.gz">
 			<PatternLayout pattern="%d{ISO8601} - %m%n"/>
 			<Policies>
 				<SizeBasedTriggeringPolicy size="100 MB"/>
